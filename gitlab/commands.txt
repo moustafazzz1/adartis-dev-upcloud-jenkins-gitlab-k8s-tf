@@ -1,0 +1,5 @@
+cat /etc/gitlab/initial_root_password
+Token creation command:
+gitlab-rails runner "token = User.find_by_username('root').personal_access_tokens.create(scopes: [:api, :read_api, :read_user, :create_runner, :k8s_proxy, :read_repository, :write_repository, :ai_features, :sudo, :admin_mode, :read_service_ping], name: 'Automation token', expires_at: '2024-08-08'); token.set_token('token-string-here123123'); token.save!"
+Create new project request:
+curl --header "PRIVATE-TOKEN: token-string-here123123" -X POST http://192.168.49.2:30000/api/v4/projects?name=aaa

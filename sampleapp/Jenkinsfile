@@ -1,0 +1,21 @@
+podTemplate(containers: [
+    containerTemplate(
+        name: 'docker',
+        image: 'docker:20.10-dind', 
+        ttyEnabled: true,
+        privileged: true, 
+        command: 'dockerd-entrypoint.sh', 
+        args: '--host=0.0.0.0:2375'
+    )
+]) {
+    node(POD_LABEL) {
+        stage('Run Docker Build') {
+            container('docker') {
+                sh 'docker --version' 
+                sh 'echo docker build nexus/image:app && sleep 10'
+                sh 'echo docker push nexus/image:app  && sleep 10'
+                sh 'echo helm update  chart nexus/image:app  && sleep 10' 
+            }
+        }
+    }
+}

@@ -1,0 +1,71 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sonatypestorage
+  labels:
+    name: sonatypestorage
+spec:
+  storageClassName: sonatypestorage
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 192.168.14.117
+    path: "/mnt/nfs-volume"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonatype-registry-data
+spec:
+  storageClassName: sonatypestorage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonatype-service
+spec:
+  ports:
+    - name: sonatype-registry
+      port: 8081
+      protocol: TCP
+      targetPort: 8081
+  selector:
+    app: sonatype-registry
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonatype-registry
+  labels:
+    app: sonatype-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonatype-registry
+  template:
+    metadata:
+      labels:
+        app: sonatype-registry
+    spec:
+      volumes:
+        - name: registry-vol
+          persistentVolumeClaim:
+            claimName: sonatype-registry-data
+      containers:
+        - image: sonatype/nexus3
+          name: nexus
+          ports:
+            - containerPort: 8081
+          volumeMounts:
+            - name: registry-vol
+              mountPath: /nexus-data
+              subPath: sonatype

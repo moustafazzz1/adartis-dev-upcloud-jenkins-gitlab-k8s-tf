@@ -1,0 +1,10 @@
+auth:
+  adminUser: admin
+  adminPassword: password
+
+service:
+  type: NodePort  # Exposes Keycloak externally. Use ClusterIP if you want it accessible only inside the cluster.
+
+postgresql:
+  postgresqlPassword: postgrespassword
+
