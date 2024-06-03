@@ -2,15 +2,18 @@
 terraform plan
 terraform apply --auto-approve
 export KUBECONFIG=`pwd`"/uks-instructions/terraform/cluster/kubeconfig.yml"
+#Hier wird die gitlab token erstellt 
 TOKEN_STRING=`terraform output api_token | tr -d '"'`
+#Hier wird die gitlab token von terraform output gerufen und unter /tmp/token Datei eingefügt
 terraform output api_token | tr -d '"' > /tmp/token
+#Hier wird gitlab bereitgestellt und als enviromental variable eingestellt
 kubectl apply -f gitlab/gitlab.yaml
 POD_NAME=$(kubectl get pods -n default -l app=gitlab -o json | jq -r  .items[0].metadata.name)
 NAMESPACE=default
 
-##################____________________________________
+# Diese Funktion überprüft die Bereitschaft des Pods
 wait_for_pod_ready() {
-    local POD_NAME=$1
+    local POD_NAME=$1 # 
     local INTERVAL=${2:-10}  # Default interval is 10 seconds
 
     while true; do
@@ -32,6 +35,7 @@ kubectl cp /tmp/token $NAMESPACE/$POD_NAME:/tmp -c gitlab
 
 kubectl exec -it $POD_NAME -- grep Password:  /etc/gitlab/initial_root_password > Initial_Root_Pass_Gitlab 
 echo -e "\n"
+# Am Zeile 36 wird Personal Access Token erstellt, um ein neues Projekt auf gitlab mit dem Name "centralized-pipelines" am Zeile 39 durch den Personal Access Token (TOKEN_STRING) erstellt zu werden. 
 kubectl exec -it $POD_NAME -- gitlab-rails runner "token = User.find_by_username('root').personal_access_tokens.create(scopes: [:api, :read_api, :read_user, :create_runner, :k8s_proxy, :read_repository, :write_repository, :ai_features, :sudo, :admin_mode, :read_service_ping], name: 'Automation token', expires_at: '2024-08-08'); token.set_token('$TOKEN_STRING'); token.save!"
 echo -e "\n"
 kubectl exec -it $POD_NAME -- curl --header "PRIVATE-TOKEN: $TOKEN_STRING" -X POST http://127.0.0.1/api/v4/projects?name=centralized-pipelines
@@ -65,7 +69,7 @@ kubectl apply -f jenkins/secret.yaml
 helm upgrade -i jenkins jenkins/jenkins -f jenkins/jenkins/values.yaml
 wait_for_pod_ready $JENKINS_POD_NAME 15
 
-
+# Hier wird api token von Jenkins erstellt. 
 cat << 'EOF' > jenkins_api_token.sh
 #!/bin/bash
 JENKINS_URL="http://localhost:8080"
