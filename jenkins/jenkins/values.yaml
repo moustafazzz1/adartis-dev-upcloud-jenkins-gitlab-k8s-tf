@@ -392,7 +392,8 @@ controller:
     - kubernetes:4203.v1dd44f5b_1cf9
     - workflow-aggregator:596.v8c21c963d92d
     - git:5.2.1
-    - configuration-as-code:1775.v810dc950b_514
+    #- configuration-as-code:1775.v810dc950b_514
+    - configuration-as-code:1810.v9b_c30a_249a_4c
     - job-dsl:latest
     - gitlab-plugin:latest
     - gitlab-api:latest
@@ -1157,8 +1158,8 @@ agent:
          cpu: 500m
          memory: 1Gi
        limits:
-         cpu: 1
-         memory: 2Gi
+         cpu: 2
+         memory: 4Gi
 
   # Useful when configuring agents only with the podTemplates value, since the default podTemplate populated by values mentioned above will be excluded in the rendered template.
   # -- Disable the default Jenkins Agent configuration

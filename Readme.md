@@ -15,7 +15,4 @@ POD_NAME=$(kubectl get pods -n default -l app=gitlab -o json | jq -r  .items[0].
 kubectl exec -it $POD_NAME -- bash -c "chmod +x /tmp/webhook.sh && ./tmp/webhook.sh"
 ```
 
-## Moustafa New
 
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml

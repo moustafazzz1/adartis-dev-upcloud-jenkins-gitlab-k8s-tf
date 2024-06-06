@@ -1,0 +1,298 @@
+[0m[1mrandom_id.token: Refreshing state... [id=FlMn4PytT7SsqdvAWTSHzd5utiXXQnFWaJc][0m
+[0m[1mmodule.upcloud_k8s.upcloud_router.example: Refreshing state... [id=04936820-12d1-4cd1-b40e-cda33a0e9818][0m
+[0m[1mmodule.upcloud_k8s.upcloud_network.example: Refreshing state... [id=034bff0d-1b2b-46c1-8027-88bfb378408a][0m
+[0m[1mmodule.upcloud_k8s.upcloud_kubernetes_cluster.example: Refreshing state... [id=0dd9c72b-78f4-4436-a258-2525aa4d14b3][0m
+[0m[1mmodule.upcloud_k8s.data.upcloud_kubernetes_cluster.example: Reading...[0m[0m
+[0m[1mmodule.upcloud_k8s.upcloud_kubernetes_node_group.group: Refreshing state... [id=0dd9c72b-78f4-4436-a258-2525aa4d14b3/medium][0m
+[0m[1mmodule.deployment.data.upcloud_kubernetes_cluster.example: Reading...[0m[0m
+[0m[1mmodule.deployment.data.upcloud_kubernetes_cluster.example: Read complete after 5s [id=0dd9c72b-78f4-4436-a258-2525aa4d14b3][0m
+[0m[1mmodule.upcloud_k8s.data.upcloud_kubernetes_cluster.example: Read complete after 5s [id=0dd9c72b-78f4-4436-a258-2525aa4d14b3][0m
+[0m[1mmodule.upcloud_k8s.local_file.kubeconfig[0]: Refreshing state... [id=5288986b678d3c95687d316f0ed71ed0346bf174][0m
+[0m[1mmodule.deployment.kubernetes_service.this: Refreshing state... [id=default/hello-uks][0m
+[0m[1mmodule.deployment.kubernetes_deployment.this: Refreshing state... [id=default/hello-uks][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # random_id.token[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "random_id" "token" {
+      [31m-[0m[0m b64_std     = "FlMn4PytT7SsqdvAWTSHzd5utiXXQnFWaJc=" [90m-> null[0m[0m
+      [31m-[0m[0m b64_url     = "FlMn4PytT7SsqdvAWTSHzd5utiXXQnFWaJc" [90m-> null[0m[0m
+      [31m-[0m[0m byte_length = 26 [90m-> null[0m[0m
+      [31m-[0m[0m dec         = "35874614244427641452608768261808839871672470941025125275166871" [90m-> null[0m[0m
+      [31m-[0m[0m hex         = "165327e0fcad4fb4aca9dbc0593487cdde6eb625d74271566897" [90m-> null[0m[0m
+      [31m-[0m[0m id          = "FlMn4PytT7SsqdvAWTSHzd5utiXXQnFWaJc" [90m-> null[0m[0m
+    }
+
+[1m  # module.deployment.kubernetes_deployment.this[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "kubernetes_deployment" "this" {
+      [31m-[0m[0m id               = "default/hello-uks" [90m-> null[0m[0m
+      [31m-[0m[0m wait_for_rollout = true [90m-> null[0m[0m
+
+      [31m-[0m[0m metadata {
+          [31m-[0m[0m annotations      = {} [90m-> null[0m[0m
+          [31m-[0m[0m generation       = 1 [90m-> null[0m[0m
+          [31m-[0m[0m labels           = {
+              [31m-[0m[0m "app" = "hello-uks"
+            } [90m-> null[0m[0m
+          [31m-[0m[0m name             = "hello-uks" [90m-> null[0m[0m
+          [31m-[0m[0m namespace        = "default" [90m-> null[0m[0m
+          [31m-[0m[0m resource_version = "1669" [90m-> null[0m[0m
+          [31m-[0m[0m uid              = "a839ee2c-033b-473d-9989-5a9bc159081d" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m spec {
+          [31m-[0m[0m min_ready_seconds         = 0 [90m-> null[0m[0m
+          [31m-[0m[0m paused                    = false [90m-> null[0m[0m
+          [31m-[0m[0m progress_deadline_seconds = 600 [90m-> null[0m[0m
+          [31m-[0m[0m replicas                  = "8" [90m-> null[0m[0m
+          [31m-[0m[0m revision_history_limit    = 10 [90m-> null[0m[0m
+
+          [31m-[0m[0m selector {
+              [31m-[0m[0m match_labels = {
+                  [31m-[0m[0m "app" = "hello-uks"
+                } [90m-> null[0m[0m
+            }
+
+          [31m-[0m[0m strategy {
+              [31m-[0m[0m type = "RollingUpdate" [90m-> null[0m[0m
+
+              [31m-[0m[0m rolling_update {
+                  [31m-[0m[0m max_surge       = "25%" [90m-> null[0m[0m
+                  [31m-[0m[0m max_unavailable = "25%" [90m-> null[0m[0m
+                }
+            }
+
+          [31m-[0m[0m template {
+              [31m-[0m[0m metadata {
+                  [31m-[0m[0m annotations = {} [90m-> null[0m[0m
+                  [31m-[0m[0m generation  = 0 [90m-> null[0m[0m
+                  [31m-[0m[0m labels      = {
+                      [31m-[0m[0m "app" = "hello-uks"
+                    } [90m-> null[0m[0m
+                }
+              [31m-[0m[0m spec {
+                  [31m-[0m[0m active_deadline_seconds          = 0 [90m-> null[0m[0m
+                  [31m-[0m[0m automount_service_account_token  = true [90m-> null[0m[0m
+                  [31m-[0m[0m dns_policy                       = "ClusterFirst" [90m-> null[0m[0m
+                  [31m-[0m[0m enable_service_links             = true [90m-> null[0m[0m
+                  [31m-[0m[0m host_ipc                         = false [90m-> null[0m[0m
+                  [31m-[0m[0m host_network                     = false [90m-> null[0m[0m
+                  [31m-[0m[0m host_pid                         = false [90m-> null[0m[0m
+                  [31m-[0m[0m node_selector                    = {} [90m-> null[0m[0m
+                  [31m-[0m[0m restart_policy                   = "Always" [90m-> null[0m[0m
+                  [31m-[0m[0m scheduler_name                   = "default-scheduler" [90m-> null[0m[0m
+                  [31m-[0m[0m share_process_namespace          = false [90m-> null[0m[0m
+                  [31m-[0m[0m termination_grace_period_seconds = 30 [90m-> null[0m[0m
+
+                  [31m-[0m[0m container {
+                      [31m-[0m[0m args                       = [] [90m-> null[0m[0m
+                      [31m-[0m[0m command                    = [] [90m-> null[0m[0m
+                      [31m-[0m[0m image                      = "ghcr.io/upcloudltd/hello" [90m-> null[0m[0m
+                      [31m-[0m[0m image_pull_policy          = "Always" [90m-> null[0m[0m
+                      [31m-[0m[0m name                       = "hello" [90m-> null[0m[0m
+                      [31m-[0m[0m stdin                      = false [90m-> null[0m[0m
+                      [31m-[0m[0m stdin_once                 = false [90m-> null[0m[0m
+                      [31m-[0m[0m termination_message_path   = "/dev/termination-log" [90m-> null[0m[0m
+                      [31m-[0m[0m termination_message_policy = "File" [90m-> null[0m[0m
+                      [31m-[0m[0m tty                        = false [90m-> null[0m[0m
+
+                      [31m-[0m[0m resources {
+                          [31m-[0m[0m limits   = {} [90m-> null[0m[0m
+                          [31m-[0m[0m requests = {} [90m-> null[0m[0m
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+[1m  # module.deployment.kubernetes_service.this[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "kubernetes_service" "this" {
+      [31m-[0m[0m id                     = "default/hello-uks" [90m-> null[0m[0m
+      [31m-[0m[0m status                 = [
+          [31m-[0m[0m {
+              [31m-[0m[0m load_balancer = [
+                  [31m-[0m[0m {
+                      [31m-[0m[0m ingress = [
+                          [31m-[0m[0m {
+                              [31m-[0m[0m hostname = "lb-0a048aa6a48f4266921010b4baee4d11-1.upcloudlb.com"
+                              [31m-[0m[0m ip       = ""
+                            },
+                        ]
+                    },
+                ]
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m wait_for_load_balancer = true [90m-> null[0m[0m
+
+      [31m-[0m[0m metadata {
+          [31m-[0m[0m annotations      = {} [90m-> null[0m[0m
+          [31m-[0m[0m generation       = 0 [90m-> null[0m[0m
+          [31m-[0m[0m labels           = {
+              [31m-[0m[0m "app" = "hello-uks"
+            } [90m-> null[0m[0m
+          [31m-[0m[0m name             = "hello-uks" [90m-> null[0m[0m
+          [31m-[0m[0m namespace        = "default" [90m-> null[0m[0m
+          [31m-[0m[0m resource_version = "2172" [90m-> null[0m[0m
+          [31m-[0m[0m uid              = "6674482d-826b-42d6-ac58-72a6409e85d1" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m spec {
+          [31m-[0m[0m allocate_load_balancer_node_ports = true [90m-> null[0m[0m
+          [31m-[0m[0m cluster_ip                        = "10.139.62.22" [90m-> null[0m[0m
+          [31m-[0m[0m cluster_ips                       = [
+              [31m-[0m[0m "10.139.62.22",
+            ] [90m-> null[0m[0m
+          [31m-[0m[0m external_ips                      = [] [90m-> null[0m[0m
+          [31m-[0m[0m external_traffic_policy           = "Cluster" [90m-> null[0m[0m
+          [31m-[0m[0m health_check_node_port            = 0 [90m-> null[0m[0m
+          [31m-[0m[0m internal_traffic_policy           = "Cluster" [90m-> null[0m[0m
+          [31m-[0m[0m ip_families                       = [
+              [31m-[0m[0m "IPv4",
+            ] [90m-> null[0m[0m
+          [31m-[0m[0m ip_family_policy                  = "SingleStack" [90m-> null[0m[0m
+          [31m-[0m[0m load_balancer_source_ranges       = [] [90m-> null[0m[0m
+          [31m-[0m[0m publish_not_ready_addresses       = false [90m-> null[0m[0m
+          [31m-[0m[0m selector                          = {
+              [31m-[0m[0m "app" = "hello-uks"
+            } [90m-> null[0m[0m
+          [31m-[0m[0m session_affinity                  = "None" [90m-> null[0m[0m
+          [31m-[0m[0m type                              = "LoadBalancer" [90m-> null[0m[0m
+
+          [31m-[0m[0m port {
+              [31m-[0m[0m node_port   = 31679 [90m-> null[0m[0m
+              [31m-[0m[0m port        = 80 [90m-> null[0m[0m
+              [31m-[0m[0m protocol    = "TCP" [90m-> null[0m[0m
+              [31m-[0m[0m target_port = "80" [90m-> null[0m[0m
+            }
+        }
+    }
+
+[1m  # module.upcloud_k8s.local_file.kubeconfig[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "local_file" "kubeconfig" {
+      [31m-[0m[0m content              = <<-EOT
+            apiVersion: v1
+            clusters:
+                - cluster:
+                    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM2akNDQWRLZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJME1EWXdNekV6TlRFd05Wb1hEVE0wTURZd01URXpOVFl3TlZvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBT01BCklRLzVMU3A2ekwxWlduREtWbWFFRGVUaGNNa0ZNY2lDVldaL0Q0alRhQnNYNDBMR3dqbGp1aXdERElHQ3EvTm0KR1hVMmFDNG1lUmpmQXRwY0ZCYktyYmZmYjdzTW1qRDUxZkp2QUp6YjVOSFI0U0ozb1pnbTFOSE1sZXRlbUpjWQpqbDVRenpmQzJWMGNtZWxsVzJvOW9MY0swZ0FMRGNnOXdzaFRnUXdJeGVJUTlSZkZBakxnbmowNmZDSzI0eCsxCkZWSXZjNkg4OUNpS2RPa1EwdXI3NkxQaGViR1VmQ2gyYzBFUUpVcmh6aHk2WnNqQ2tFQVRVeWMxZGxhR1NCTjkKbDY3Q0UwdmFJL1dqcVRia1pZRmVmdkJxQWU4NFRYS0dPTmxFMG1BYXhwS2FsMjNpZ0xIelowdXJlWkJSOHhLKwptczJGUVVDU1prNU5oNUtjaXVNQ0F3RUFBYU5GTUVNd0RnWURWUjBQQVFIL0JBUURBZ0trTUJJR0ExVWRFd0VCCi93UUlNQVlCQWY4Q0FRQXdIUVlEVlIwT0JCWUVGRWs2d1hmdzB0eVFndSsyK3RkdzBnaElCYThsTUEwR0NTcUcKU0liM0RRRUJDd1VBQTRJQkFRQk1ucWhUc3dZRWt1alUwazV1VExzS0hXeDRpbHpIMUZFWTM1S0MvTWdRdzIrSQo0RDhkZUJSVHVZT2lLY0l6NmxTVVRlZG92b3RMb1hBdGFPY2hLNGRZVDM2cWRnSzhqQ3ZlS1ZxQW0zOGh4c0dICnVRNlpWYmFjWk5PeHpVb2tqQSt3L251R0xNMGE1OXRhSG12d2JBU1dKQ0RMWURwS1VDZllPTDk3SWR1MTdrNFEKT2cvNjh6VitjMzJXUk9QR0RSb1Q5anprTUNEeDRLZXRrV1lSbkZBVjBES0JIM2hCbCtUVUMxN081a1NKY2ltcAppNFQrWTVsaXJ0SVpoQk9NZEZnVTVPVGNUbmV3RStjY1ZESVM0SHBCZGlxaEJDZnVqU1NWUVZWekprbWplVWxJCit6c1lwV2lvVWxQaXdnNjIxdjNaTS9veEtZek5zMXFrYVYwdklwdkEKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+                    server: https://lb-0a1657cd4ba94ca5ba1590355a60ec9e-1.upcloudlb.com:6443
+                  name: uks-cluster-example-cluster
+            contexts:
+                - context:
+                    cluster: uks-cluster-example-cluster
+                    user: uks-cluster-example-cluster-admin
+                  name: uks-cluster-example-cluster-admin@uks-cluster-example-cluster
+            current-context: uks-cluster-example-cluster-admin@uks-cluster-example-cluster
+            kind: Config
+            preferences: {}
+            users:
+                - name: uks-cluster-example-cluster-admin
+                  user:
+                    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURFekNDQWZ1Z0F3SUJBZ0lJVGtQQ3dyZlFuV3N3RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TkRBMk1ETXhNelV4TURWYUZ3MHlOVEEyTURNeE16VTJNRFphTURReApGekFWQmdOVkJBb1REbk41YzNSbGJUcHRZWE4wWlhKek1Sa3dGd1lEVlFRREV4QnJkV0psY201bGRHVnpMV0ZrCmJXbHVNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXNxU1RUWkJrLzBnSWVackoKUWE4QkFlT2IxUmo4Q0d4ajZZUER4MW93YVpOR0dyUEoxY3Y5L1NYK2lLQkhnYU9XNHNtN0JLRGkzYnhSY2pYWgpQSDZocmRiMjBiMXJ0RGQwaUhHYnBxV0ZPeDdSNFpNQkVlMnhKbGRTbkNLUjZ6VG1xdFExb2hQRmI4VjF6SG1aCkRuTnB3blNlN09jelVycmNYNXVIOUxYRGhOemxjU0JRckZDWVRsRjF0WDJIT3IwR1haVktmcnZ6cXZ3RS9FSDUKNUVTU1lLTVBDOE53K3Y3OFRsMFZlakVZYWM3d1RNYlFXRUVnT2phNGhxaWlLb2djY0pGNFFGblgzTlRCek1nawprTVFIMUVNMm05T2MwUnRKa0o3N2V6ai9lR3VKODhYQTdhODVEVW5lOE5TZytQaW1WUzlRTDJjLzNIVlVrUGFBCi9nMDFlUUlEQVFBQm8wZ3dSakFPQmdOVkhROEJBZjhFQkFNQ0JhQXdFd1lEVlIwbEJBd3dDZ1lJS3dZQkJRVUgKQXdJd0h3WURWUjBqQkJnd0ZvQVVTVHJCZC9EUzNKQ0M3N2I2MTNEU0NFZ0ZyeVV3RFFZSktvWklodmNOQVFFTApCUUFEZ2dFQkFNTzFZNnZ2UXJCUXZjSVJTalgxS0dPTHF5bEo4UkJRcjlaelE5Q2NBb3JiS2NNVmdjOGl1WUlQCkY3OEI0UUxwbUVxSktyQnhSZjcxVWhwRnEyUWJwcjVQQ2EyNlFxbm1PS0tUVDc1RjhibGtLdkVQN1ZQOWZoWVAKN0ZHLzNGK29zWGdUTVIxa2NkVm1ySWV3SjRnNDlDQk9yQTVGdUViem82K09rY2gwdWx0ditWNE13MDk5ZWtJMApSckY0NXZXNDJBTHJycm9SNWQ5dnBxWkFuNkk5V1NSQkNGYWFCVUdtamlZL2VsbmluRVNzTm5kNzJuTHllTm5XCjdySmVxbWdtUjNJNzlCeTRlZVV1Y21uenZDZ0hhcGtuWjBSWS9RVEUzWkZFclFIVmp3LzZSVzl5QVdiaGs4NTEKU0pRWHhET0wveEdNVTZUR2F0SnE0S24ybUFGYUJFST0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+                    client-key-data: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb2dJQkFBS0NBUUVBc3FTVFRaQmsvMGdJZVpySlFhOEJBZU9iMVJqOENHeGo2WVBEeDFvd2FaTkdHclBKCjFjdjkvU1graUtCSGdhT1c0c203QktEaTNieFJjalhaUEg2aHJkYjIwYjFydERkMGlIR2JwcVdGT3g3UjRaTUIKRWUyeEpsZFNuQ0tSNnpUbXF0UTFvaFBGYjhWMXpIbVpEbk5wd25TZTdPY3pVcnJjWDV1SDlMWERoTnpsY1NCUQpyRkNZVGxGMXRYMkhPcjBHWFpWS2ZydnpxdndFL0VINTVFU1NZS01QQzhOdyt2NzhUbDBWZWpFWWFjN3dUTWJRCldFRWdPamE0aHFpaUtvZ2NjSkY0UUZuWDNOVEJ6TWdra01RSDFFTTJtOU9jMFJ0SmtKNzdlemovZUd1Sjg4WEEKN2E4NURVbmU4TlNnK1BpbVZTOVFMMmMvM0hWVWtQYUEvZzAxZVFJREFRQUJBb0lCQUNFOGIwOXgrdWhuM1hQSwpjWUV2N3c4TDZyVTE1Y1luYkZ0SXNZY0laNU5zM0JFaHUvNXo2bmhMdGxSekJYckFGZFZ4MU1LaXNES3kwN0JkCkJtS3o2SjZ3TE5HTzNWZjFMVkFwV3QwaFZHMVFhWm4vUUthMlEwd3YyT1hGcE1KTzRFK09GY0JtejBmaFErNWIKL1Ric0VCUW1vRjdSRVFKbVU1UFNHdlJUVU9JSjZ4YXF4QmVqMDZyc1FQNkxaRnlSV3ROYTBjSXYrV3A5NFF1QQpZcCtldG9KdFFmWE02K1k0di9oZUVwZ2ZEQlZQMXJ5TDJFbkMzaWp1dEh2TDBZMFo4ZEJGaVpibzAvRkMrSHM4CmpDWHR0ZVBGS3Y0WDlBbWlHU1RWY2VQQldITWpHaHExZ05YRXhrYmEwR0g2OTdXRGhaZ0p4VDFyT0JWSFdUcEEKS0p6dy9ZRUNnWUVBd3RVWFV1UmZqUHhjSzF4VnIwNTkrODE5d1dvRmpEWVRsckQvNjZ5QUxXRmZTeEk0cEUvRgptSHBMVkkzZ1ZCUDNDZUhGVFRRS01sdUxXclZSZDIrL3VYemFGbUh2bG9GYnVjeWFsRCthS0VsYUY5ODhTN1B1CjcrQzc2VW50bytkSnUwcXJqOFAzVkQzdGpGZUp6RUZMMFhTVy9CTEh0eEIvVkZiV1lYSDNZVEVDZ1lFQTZycFEKWEZEZ2ZrRnZyUUxWbXY2S0Y2dVZLOHdOV3Y4WVdrYng1RG4yOHdlZ09PWDZDbTlmZU5lellRTEowdFgxNFg4MgpaMTliSmZseEV1VU1qK05yZ09pRXJrTTZPR2xLTEtJK0tja0gzVE8yNTBnYnU5S1NwVlg0bzdBdjZYekdrM3BQCnJYT1cySDVMWlNuTVMvRVNpRUNmR3JTcUFDcms2N2tEM2E2R3hza0NnWUEweFhEdTA4cUpybVRzbmJMYnE5LzEKenYvcjNtS29TcEZkdEkxczhTazZvWEFsTGtkSFFoQWNMNnV0dUV2MW1mN0VuM0ZJYXZzRURzV2RDUldLeXlyYgorOVE2VWNhS05ubDR4dEZyckJwK0pQZ1JGVGNJcmpEZXFqbGJnOW1wRm1GaktHTjFxamVZaXJtSDFNSVBIL1NBClJCc05KYTBRaVpoamFLM2ljUEwzVVFLQmdDYklHYmJtOWZCbVIxbENlcUJkSmR1N1VhNG16SjRZUDZIS3p2UnkKVDBiZ0g2ekc4b1QrMmJ0UmlDV2pIRTFsWkhhWldoZkNQWUVNc1kzNW9oV3o4WE1lOTYwREZuOXpoZm5SNUl0cQoxNDNJbVpPazZsQWgvbkNxdjZYcjJqNnRpdkdhNThjMHJkdWZJajNZcGhSMkJDWFc1M0sySHRCZ1JlcGNhek1aClB0TmhBb0dBWXBnSWJsaFZJNUtjcmVxNTI2M0U1WERFOFRqSm5RY1pLa1ROeXJXVmhkbGljNHZMQkZTMlBtNmIKbmZycnYybVhteDQ0MGxIK00yV2EyQmFNQVo0b05paDFJMnhZWHIvTmgyZWtDUmVJU3dzRTNheVlDenpqUlBwMApKU3ZnZGR2VlRkYmpxWnJTaEU5K0hCNk1wdjVsYmNDQmNKZXhKVUNnUTNVb1JvbkxwSWs9Ci0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
+        EOT [90m-> null[0m[0m
+      [31m-[0m[0m content_base64sha256 = "KMFcRIx1hnSLcGw0eWpgNbKvC6BSaxcb4FsysulEAqE=" [90m-> null[0m[0m
+      [31m-[0m[0m content_base64sha512 = "5ESegDotqw5ZB0aB4+RKG4Wg79qCje2Zpxl8s+9Bbc3dL1fNI5K6KJd2mNq8h67LmBGQET4zKWCkfbVnRyALRQ==" [90m-> null[0m[0m
+      [31m-[0m[0m content_md5          = "835f06c513c5450eecf9298f6e78bd38" [90m-> null[0m[0m
+      [31m-[0m[0m content_sha1         = "5288986b678d3c95687d316f0ed71ed0346bf174" [90m-> null[0m[0m
+      [31m-[0m[0m content_sha256       = "28c15c448c7586748b706c34796a6035b2af0ba0526b171be05b32b2e94402a1" [90m-> null[0m[0m
+      [31m-[0m[0m content_sha512       = "e4449e803a2dab0e59074681e3e44a1b85a0efda828ded99a7197cb3ef416dcddd2f57cd2392ba28977698dabc87aecb981190113e332960a47db56747200b45" [90m-> null[0m[0m
+      [31m-[0m[0m directory_permission = "0777" [90m-> null[0m[0m
+      [31m-[0m[0m file_permission      = "0777" [90m-> null[0m[0m
+      [31m-[0m[0m filename             = "uks-instructions/terraform/cluster/kubeconfig.yml" [90m-> null[0m[0m
+      [31m-[0m[0m id                   = "5288986b678d3c95687d316f0ed71ed0346bf174" [90m-> null[0m[0m
+    }
+
+[1m  # module.upcloud_k8s.upcloud_kubernetes_cluster.example[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "upcloud_kubernetes_cluster" "example" {
+      [31m-[0m[0m control_plane_ip_filter = [
+          [31m-[0m[0m "0.0.0.0/0",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m id                      = "0dd9c72b-78f4-4436-a258-2525aa4d14b3" [90m-> null[0m[0m
+      [31m-[0m[0m labels                  = {} [90m-> null[0m[0m
+      [31m-[0m[0m name                    = "uks-cluster-example-cluster" [90m-> null[0m[0m
+      [31m-[0m[0m network                 = "034bff0d-1b2b-46c1-8027-88bfb378408a" [90m-> null[0m[0m
+      [31m-[0m[0m network_cidr            = "172.16.1.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m node_groups             = [
+          [31m-[0m[0m "medium",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m plan                    = "development" [90m-> null[0m[0m
+      [31m-[0m[0m private_node_groups     = false [90m-> null[0m[0m
+      [31m-[0m[0m state                   = "running" [90m-> null[0m[0m
+      [31m-[0m[0m version                 = "1.27" [90m-> null[0m[0m
+      [31m-[0m[0m zone                    = "de-fra1" [90m-> null[0m[0m
+    }
+
+[1m  # module.upcloud_k8s.upcloud_kubernetes_node_group.group[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "upcloud_kubernetes_node_group" "group" {
+      [31m-[0m[0m anti_affinity          = true [90m-> null[0m[0m
+      [31m-[0m[0m cluster                = "0dd9c72b-78f4-4436-a258-2525aa4d14b3" [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "0dd9c72b-78f4-4436-a258-2525aa4d14b3/medium" [90m-> null[0m[0m
+      [31m-[0m[0m labels                 = {
+          [31m-[0m[0m "managedBy" = "terraform"
+          [31m-[0m[0m "project"   = "uks-instructions"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m name                   = "medium" [90m-> null[0m[0m
+      [31m-[0m[0m node_count             = 2 [90m-> null[0m[0m
+      [31m-[0m[0m plan                   = "6xCPU-16GB" [90m-> null[0m[0m
+      [31m-[0m[0m ssh_keys               = [] [90m-> null[0m[0m
+      [31m-[0m[0m utility_network_access = true [90m-> null[0m[0m
+    }
+
+[1m  # module.upcloud_k8s.upcloud_network.example[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "upcloud_network" "example" {
+      [31m-[0m[0m id     = "034bff0d-1b2b-46c1-8027-88bfb378408a" [90m-> null[0m[0m
+      [31m-[0m[0m name   = "uks-cluster-example-net" [90m-> null[0m[0m
+      [31m-[0m[0m router = "04936820-12d1-4cd1-b40e-cda33a0e9818" [90m-> null[0m[0m
+      [31m-[0m[0m type   = "private" [90m-> null[0m[0m
+      [31m-[0m[0m zone   = "de-fra1" [90m-> null[0m[0m
+
+      [31m-[0m[0m ip_network {
+          [31m-[0m[0m address            = "172.16.1.0/24" [90m-> null[0m[0m
+          [31m-[0m[0m dhcp               = true [90m-> null[0m[0m
+          [31m-[0m[0m dhcp_default_route = false [90m-> null[0m[0m
+          [31m-[0m[0m dhcp_dns           = [] [90m-> null[0m[0m
+          [31m-[0m[0m dhcp_routes        = [] [90m-> null[0m[0m
+          [31m-[0m[0m family             = "IPv4" [90m-> null[0m[0m
+          [31m-[0m[0m gateway            = "172.16.1.1" [90m-> null[0m[0m
+        }
+    }
+
+[1m  # module.upcloud_k8s.upcloud_router.example[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "upcloud_router" "example" {
+      [31m-[0m[0m attached_networks = [
+          [31m-[0m[0m "034bff0d-1b2b-46c1-8027-88bfb378408a",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m id                = "04936820-12d1-4cd1-b40e-cda33a0e9818" [90m-> null[0m[0m
+      [31m-[0m[0m name              = "uks-cluster-example-router" [90m-> null[0m[0m
+      [31m-[0m[0m type              = "normal" [90m-> null[0m[0m
+    }
+
+[1mPlan:[0m 0 to add, 0 to change, 8 to destroy.
+[0m
+Changes to Outputs:
+  [31m-[0m[0m api_token = "FlMn4PytT7SsqdvAWTSHzd5utiXXQnFWaJc" [90m-> null[0m[0m
+[0m[1mrandom_id.token: Destroying... [id=FlMn4PytT7SsqdvAWTSHzd5utiXXQnFWaJc][0m[0m
+[0m[1mrandom_id.token: Destruction complete after 0s[0m
+[0m[1mmodule.upcloud_k8s.local_file.kubeconfig[0]: Destroying... [id=5288986b678d3c95687d316f0ed71ed0346bf174][0m[0m
+[0m[1mmodule.upcloud_k8s.local_file.kubeconfig[0]: Destruction complete after 0s[0m
+[0m[1mmodule.upcloud_k8s.upcloud_kubernetes_node_group.group: Destroying... [id=0dd9c72b-78f4-4436-a258-2525aa4d14b3/medium][0m[0m
+[0m[1mmodule.deployment.kubernetes_service.this: Destroying... [id=default/hello-uks][0m[0m
+[0m[1mmodule.deployment.kubernetes_deployment.this: Destroying... [id=default/hello-uks][0m[0m
+[0m[1mmodule.deployment.kubernetes_service.this: Destruction complete after 0s[0m
+[0m[1mmodule.deployment.kubernetes_deployment.this: Destruction complete after 0s[0m
+[0m[1mmodule.upcloud_k8s.upcloud_kubernetes_node_group.group: Still destroying... [id=0dd9c72b-78f4-4436-a258-2525aa4d14b3/medium, 10s elapsed][0m[0m
+[0m[1mmodule.upcloud_k8s.upcloud_kubernetes_node_group.group: Still destroying... [id=0dd9c72b-78f4-4436-a258-2525aa4d14b3/medium, 20s elapsed][0m[0m
+[0m[1mmodule.upcloud_k8s.upcloud_kubernetes_node_group.group: Still destroying... [id=0dd9c72b-78f4-4436-a258-2525aa4d14b3/medium, 30s elapsed][0m[0m
+[0m[1mmodule.upcloud_k8s.upcloud_kubernetes_node_group.group: Still destroying... [id=0dd9c72b-78f4-4436-a258-2525aa4d14b3/medium, 40s elapsed][0m[0m
+[0m[1mmodule.upcloud_k8s.upcloud_kubernetes_node_group.group: Still destroying... [id=0dd9c72b-78f4-4436-a258-2525aa4d14b3/medium, 50s elapsed][0m[0m
+[0m[1mmodule.upcloud_k8s.upcloud_kubernetes_node_group.group: Still destroying... [id=0dd9c72b-78f4-4436-a258-2525aa4d14b3/medium, 4m29s elapsed][0m[0m
+[31m╷[0m[0m
+[31m│[0m [0m[1m[31mError: [0m[0m[1mGet "https://api.upcloud.com/1.3/kubernetes/0dd9c72b-78f4-4436-a258-2525aa4d14b3/node-groups/medium": dial tcp: lookup api.upcloud.com: no such host[0m
+[31m│[0m [0m
+[31m│[0m [0m[0m
+[31m╵[0m[0m

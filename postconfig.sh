@@ -31,15 +31,18 @@ wait_for_pod_ready() {
 }
 
 wait_for_pod_ready $POD_NAME 15
+# Hier wird die Token von Lokal /tmp/token zu gitlab kopiert. Der Token erlaubt die Verbindung zwichen Jenkins und Gitlab
 kubectl cp /tmp/token $NAMESPACE/$POD_NAME:/tmp -c gitlab
-
+#Hier wird das gitlab root password abgerufen und in der Datein Initial_Root_Pass_Gitlab eingefügt
 kubectl exec -it $POD_NAME -- grep Password:  /etc/gitlab/initial_root_password > Initial_Root_Pass_Gitlab 
 echo -e "\n"
-# Am Zeile 36 wird Personal Access Token erstellt, um ein neues Projekt auf gitlab mit dem Name "centralized-pipelines" am Zeile 39 durch den Personal Access Token (TOKEN_STRING) erstellt zu werden. 
+# Hier wird Personal Access Token erstellt, um ein neues Projekt auf gitlab mit dem Name "centralized-pipelines" am Zeile 39 durch den Personal Access Token (TOKEN_STRING) erstellt zu werden. 
 kubectl exec -it $POD_NAME -- gitlab-rails runner "token = User.find_by_username('root').personal_access_tokens.create(scopes: [:api, :read_api, :read_user, :create_runner, :k8s_proxy, :read_repository, :write_repository, :ai_features, :sudo, :admin_mode, :read_service_ping], name: 'Automation token', expires_at: '2024-08-08'); token.set_token('$TOKEN_STRING'); token.save!"
 echo -e "\n"
+# Diese Befehl erstellt ein neues gitlab Projekt mit dem Name centralized-pipelines
 kubectl exec -it $POD_NAME -- curl --header "PRIVATE-TOKEN: $TOKEN_STRING" -X POST http://127.0.0.1/api/v4/projects?name=centralized-pipelines
 echo -e "\n"
+## Hier erstelle ich die Schlüssel. Ich benutze diese Schlüssel, damit der sample repo auf gitlab geschikt wird. Weitere Info finden Sie in push_repo.sh
 KEY_PATH="./key_pairs/"
 KEY_FILENAME="id_rsa"
 mkdir -p $KEY_PATH
