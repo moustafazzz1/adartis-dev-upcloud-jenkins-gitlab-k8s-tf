@@ -46,7 +46,7 @@ echo -e "\n"
 # Ein neues Projekt namens `centralized-pipelines` wird auf GitLab mit dem Personal Access Token erstellt.
 kubectl exec -it $POD_NAME -- curl --header "PRIVATE-TOKEN: $TOKEN_STRING" -X POST http://127.0.0.1/api/v4/projects?name=centralized-pipelines
 echo -e "\n"
-# Hier erstelle ich die Schlüssel. Ich benutze diese Schlüssel, damit der sample repo auf gitlab geschikt wird. Weitere Info finden Sie in push_repo.sh
+# Hier benutze ich den Schlüssel, den ich manuell erstellt habe, damit das Sample-Repo auf GitLab gepusht wird. Weitere Infos finden Sie in push_repo.sh
 KEY_PATH="./key_pairs/"
 KEY_FILENAME="id_rsa"
 mkdir -p $KEY_PATH
