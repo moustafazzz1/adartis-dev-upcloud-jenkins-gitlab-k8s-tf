@@ -16,24 +16,28 @@ kubectl exec -it $POD_NAME -- bash -c "chmod +x /tmp/webhook.sh && ./tmp/webhook
 ```
 
 
-Explanation of webhook.sh
+## Explanation of `webhook.sh`
 
-The webhook.sh script automates the creation of a webhook in GitLab. The webhook links GitLab to Jenkins, enabling Jenkins pipelines to trigger automatically on GitLab events.
-Script Breakdown
+The `webhook.sh` script automates the creation of a webhook in GitLab to enable communication between GitLab and Jenkins. This webhook ensures that Jenkins pipelines are triggered automatically when specific GitLab events occur.
 
-    API Tokens:
-        PRIVATE-TOKEN: GitLab API authentication token.
-        JENKINS_API_TOKEN: Token for Jenkins API access.
+### Purpose of the Script
 
-    Webhook Configuration:
-        Sends a POST request to GitLab's API to add a webhook for project ID 1.
-        The webhook URL (http://jenkins.default.svc.cluster.local:8080/centralized-pipelines/test-job) specifies the Jenkins service in Kubernetes.
+- **API Tokens:**
+  - `PRIVATE-TOKEN`: Authenticates requests to the GitLab API.
+  - `JENKINS_API_TOKEN`: Used for Jenkins API authentication.
 
-    Disabling SSL Verification:
-        enable_ssl_verification=false is set to bypass SSL checks for internal communications.
+- **Webhook Configuration:**
+  - Sends a `POST` request to the GitLab API to create a webhook for project ID `1`.
+  - The webhook URL is `http://jenkins.default.svc.cluster.local:8080/centralized-pipelines/test-job`, which points to the Jenkins service running inside the Kubernetes cluster.
 
-Script Content
+- **SSL Verification:**
+  - The `enable_ssl_verification=false` parameter disables SSL verification for the webhook, as communication occurs within the internal Kubernetes network.
 
+---
+
+### `webhook.sh` Script Content
+
+```bash
 #!/bin/bash
 JENKINS_API_TOKEN=116594c2e30348a25af086ff0bd442107b
 curl --header "PRIVATE-TOKEN: c-6vQMnRBqtrDOQmvnf-kjtHXpZs0jhdEWM" \
